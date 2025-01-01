@@ -45,7 +45,12 @@ func addition(input string) string {
 	str1 := strings.Trim(parts[0], " ")
 	str2 := strings.Trim(parts[1], " ")
 
-	return str1 + str2
+	result := str1 + str2
+	if len(result) > 40 {
+		return result[:40] + "..."
+	} else {
+		return result
+	}
 }
 
 func subtraction(input string) string {
@@ -77,8 +82,13 @@ func multiplication(input string) string {
 	if err != nil || n < 1 || n > 10 {
 		panic("Неподходящее число для умножения")
 	}
+	result := strings.Repeat(str1, n)
+	if len(result) > 40 {
+		return result[:40] + "..."
+	} else {
+		return result
+	}
 
-	return strings.Repeat(str1, n)
 }
 
 func division(input string) string {
@@ -99,8 +109,5 @@ func division(input string) string {
 	dividedLength := length / n
 	result := str1[:dividedLength]
 
-	if len(result) > 40 {
-		return result[:40] + "..."
-	}
 	return result
 }
